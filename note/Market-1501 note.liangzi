@@ -1,0 +1,47 @@
+这个文档主要记录了行人重识别中拟用来训练的数据集market-1501的一些量
+
+注意：经过和迟老师和刘一秀学长的讨论，目前对数据集的处理方式如下：
+1 对一个标签下的所有文件（包括在不同摄像机下的）用来进行训练。
+2 神经网络的结果不是最终的结果，而应该是一个向量。
+3 行人重识别和传统机器学习在细节上有所不同：
+    test模式下，重识别仍然应该具有二范数以进行目标的筛选；
+    train模式下，应该具有度量性，即相同id的差的范数极小，不同id之间的差的范数极大。
+4 因此在哪一个摄像机下其实并不重要（暂时来看，不先去考虑跟踪）
+
+
+parameter:
+
+camera:six(consist of 5高清，1低清)
+id：1501，gallery number：32668
+
+floders: 4
+1)'bounding_box_test' 19732,for test
+2)'bounding_box_train' 12936,for train
+3)'query'  query
+4)'gt_query'  good?junk?
+5)'gt_bbox'   ......
+
+命名规则：
+for instance: 0002_c1s1_000451_03.jpg
+
+0002   -->  id of each people
+c1s1   -->  camera1 sequence1,一共有6个摄像机，每个摄像机有若干个sequence
+000451 -->  帧，指的是该录像下的第多少帧
+03     -->  每一帧上有可能好几个bbox(框)，因而这是第三个
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

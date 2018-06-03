@@ -1,0 +1,27 @@
+Windows下使用pytorch 的安装历程（包括科学计算函数库、视觉库等等）
+
+由于ubuntu已经被玩坏，所以暂时将任务进度转化到Windows上进行。下面是配置步骤：
+一．	安装anaconda
+Win10 X64
+（1）下载镜像https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+（2）安装anadonda（直接运行.exe文件即可）。建议加入到路径，并且卸载掉之前的电脑上的python，以避免冲突。
+（3）将清华大学的镜像设置为路径。在google搜索anaconda时便有一个链接，使用该链接，可以进入anaconda添加路径的教程，如下：
+https://mirror.tuna.tsinghua.edu.cn/help/anaconda/
+在管理员身份下进行如下指令：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+
+# for legacy win-64
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/peterjc123/
+如此一来便设置好了路径。
+（3）安装pytorch和torchvision。Google搜索pytorch，进入官网，选择自己需要的版本安装指令。（注意：与ubuntu不同，win下安装torchvision时使用pip3 并不奏效，仍然是使用pip即可）
+（4）配置IDE和其他函数库。本来以为anaconda已经包含了很多的函数库，其实不是这个样子的。所以一旦有一些无法使用的库建议直接在命令行下安装（conda install 。。。）。IDE有很多种，使用pycharm时注意interpreter使用anaconda的版本，其他亦如是。
+（5）配置CV。这个步骤很简单，conda install opencv即可，这个样子应该会安装其最新版本，不需要再次安装opencv-python包。
+如此一来，环境就配置完成了（希望能早日安装回ubuntu）。
+2018年5月22日
