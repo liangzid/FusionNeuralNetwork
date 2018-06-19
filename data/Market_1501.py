@@ -28,6 +28,7 @@ from PIL import Image
 import numpy as np
 from torchvision import transforms as trans
 import string
+import cv2
 
 
 class Market_1501(data.Dataset):
@@ -95,9 +96,12 @@ class Market_1501(data.Dataset):
         得到指定图片的数据
         '''
         img_path=self.imgs[index]
-        label = int(self.imgs[index].spilt('.')[-2].split('/')[-1].split('_')[0])
+        label = int(self.imgs[index].split('.')[-2].split('/')[-1].split('_')[0])
         data=Image.open(img_path)
+
+        #data=cv2.imread(img_path)
       #  data=self.transforms(data)
+
         return data,label
 
     def __len__(self):

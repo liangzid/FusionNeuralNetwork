@@ -2,8 +2,18 @@
 # transform it from MATLAB
 # liangzi  2017 3.29
 
+
+"""
+modified the code..
+some bug was found when I use this pyfile into person Re-ID
+this code has no test before
+
+liangzid, 2018,6,10
+"""
+
+
 import numpy
-import mpmath
+import math
 
 def XQDA(galx, probx, gal_labels, prob_labels, learn_rate=0.001,qda_dims = -1):
 
@@ -35,8 +45,8 @@ def XQDA(galx, probx, gal_labels, prob_labels, learn_rate=0.001,qda_dims = -1):
         prob_class_sum[k - 1, :] = numpy.sum(probx[prob_index - 1, :], 1)
 
         ni += nk*mk
-        galW[gal_index-1]=mpmath.sqrt(mk)
-        probW[prob_index-1]=mpmath.sqrt(nk)
+        galW[gal_index-1]=math.sqrt(mk)
+        probW[prob_index-1]=math.sqrt(nk)
 
     gal_sum=numpy.sum(gal_class_sum,1)
     prob_sum=numpy.sum(prob_class_sum,1)

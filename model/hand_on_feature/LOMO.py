@@ -63,12 +63,10 @@ it has:
 SSR, MSR, MSRCR, MSRCP, and so on.
 '''
 def Retinex_SingleScale(img,c):
-    img=np.float(img)
     retinex=np.log10(img)-np.log10(cv2.GaussianBlur(img,(0,0),c))
     return retinex
 
 def Retinex_MultiScale(img,c_list):
-    img=np.float(img)
     retinex=np.zeros_like(img)
     for c in c_list:
         retinex+=Retinex_SingleScale(img,c)
@@ -146,7 +144,7 @@ def Retinex_AutomatedMSRCR(img, sigma_list):
 
 
 def Retinex_MSRCP(img, sigma_list, low_clip, high_clip):
-    img = np.float(img) + 1.0
+    img = img + 1.0
 
     intensity = np.sum(img, 2) / img.shape[2]
 

@@ -1,0 +1,113 @@
+1读取图像
+cv.imread('path',x)
+x={
+cv2.IMREAD_COLOR      彩色图像，透明度会被忽略
+cv2.IMGEAD_GRAYSCALE  灰度模式读入图像
+cv2.IMGEAD_UNCHANGED  读入图像包括其alpha通道
+
+0                     灰色
+1                     彩色
+}
+
+#当图片路径错误时，opencv不会报错，但是得到的img的结果print出来是none
+
+2显示图像
+
+cv2.imshow('自己起的名字',img)
+
+cv2.waitKey(0)   #按任意键继续
+
+cv2.destroyAllWindows() #摧毁所有窗口
+
+3保存图像
+cv2.imwrite('文件的名字',img)
+
+
+总结代码
+mport numpy as np
+import cv2
+
+img = cv2.imread('???.jpg',0)
+cv2.imshow('image',img)
+k = cv2.waitKey(0)    #读取按下的键是什么键
+if k == 27:
+# wait for ESC key to exit    #ESC
+cv2.destroyAllWindows()
+elif k == ord('s'): # wait for 's' key to save and exit    #读取按下的键是不是s
+cv2.imwrite('messigray.png',img)
+cv2.destroyAllWindows()
+
+#如果是64位系统需要将改为k = cv2.waitKey(0)&0xFF   #相当于后面加上8个1
+
+
+相应的matplotlib代码：
+
+import numpy as np
+import cv2
+from matplotlib import pyplot as plt
+
+img = cv2.imread('？？？.jpg',0) 读取图像为灰度图
+plt.imshow(img, cmap = 'gray', interpolation = 'bicubic')
+plt.xticks([]), plt.yticks([]) # to hide tick values on X and Y axis
+plt.show()
+
+其中在函数
+matplotlib.pyplot.imshow(X, cmap=None, norm=None, aspect=None, interpolation=None,
+    alpha=None, vmin=None, vmax=None, origin=None, extent=None, shape=None, filternorm=1,
+    filterrad=4.0, imlim=None, resample=None, url=None, hold=None, data=None, **kwargs)
+里，
+X为输入的张量，若为矩阵，则起到绘图功能（plot），若为M×N×3的张量，则输出彩色图像，若为M×N×4的张量，则输出RGBA图像
+cmap 颜色调节
+aspect 尺度调节
+interpolation 插值 包含参量有‘none’, ‘nearest’, ‘bilinear’, ‘bicubic’, ‘spline16’, ‘spline36’,
+‘hanning’, ‘hamming’, ‘hermite’, ‘kaiser’, ‘quadric’, ‘catrom’, ‘gaussian’, ‘bessel’,
+‘mitchell’, ‘sinc’, ‘lanczos’
+norm 正则化，归一化
+vmin，vmax 对亮度进行归一化
+alpha，规定alpha值。
+什么是alpha值？
+alpha通道一般用作不透明度参数。如果一个像素的alpha通道数值为0%，那它就是完全透明的（也就是看不见的），
+而数值为100%则意味着一个完全不透明的像素（传统的数字图像）。在0%和100%之间的值则使得像素可以透过背景显示出来，
+就像透过玻璃（半透明性），这种效果是简单的二元透明性（透明或不透明）做不到的。
+它使数码合成变得容易。alpha通道值可以用百分比、整数或者像RGB参数那样用0到1的实数表示
+（https://zh.wikipedia.org/wiki/RGBA）
+origin：坐标原点选择，upper还是lower
+extent扩充像素，scalars（left，right，bottom，top）
+shape 视为，scalars（columns，rows）
+
+
+4视频处理的代码
+import numpy as np
+import cv2
+
+cap = cv2.VideoCapture(0)
+
+while(True):
+# Capture frame-by-frame
+
+ret, frame = cap.read()
+
+# Our operations on the frame come here
+gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+# Display the resulting frame
+cv2.imshow('frame',gray)
+if cv2.waitKey(1) & 0xFF == ord('q'):
+break
+
+# When everything done, release the capture
+cap.release()
+cv2.destroyAllWindows()
+注释：
+cap.read() 检验帧的读取是否到达了结尾
+cap.isOpened()检验是否初始化设备成功
+
+
+
+
+
+
+
+
+
+

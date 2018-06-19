@@ -1,6 +1,25 @@
 this file is after liangzi begin to install Ubuntu18.04
 Ubuntu下配置行人重识别环境笔记
 
+1.安装Ubuntu
+2.进行系统更新
+3.对系统软件源里面的东西进行改正,除了最后一个源文件之外的所有都打上对号
+4.进行重新更新
+5.安装python2
+6.安装pip,pip3
+7.安装pytorch,tensorflow
+
+
+
+
+记录： 对pip install 速度太慢导致time out 的解决方案
+
+1 使用’ sudo pip3  install --index https://pypi.mirrors.ustc.edu.cn/simple/ ‘+ 需要安装的库
+2 使用 ‘sudo pip install --default-timeout=100 future’
+
+
+
+
 
 
 
