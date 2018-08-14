@@ -1,21 +1,25 @@
+>这篇文章在2018年8月14日进行了改动。改动原因：深度学习服务器网址变化。
+
 # 利用ssh远程登录深度学习服务器并且配置行人再识别环境笔记
 1. 本地环境：Ubuntu18.04；
 2. 远程服务器环境：Ubuntu14.04；
 3. 目标配置：python深度学习环境，pytorch，opencv2.4.3，cv3，使用python3.6，cuda 8.0
 4. 注释：不存在root权限
 
+
+
 ## 连接上远程服务器
 ### 使用VNC VIEWER
 
 VNC VIEWER是一个GUI界面的连接器，在搜索栏输入网址和端口，按照要求来即可。这里给出网址和端口：
 
-219.216.87.170:70
+219.216.72.117:70
 ### 使用ssh
 
 打开shell，输入 ssh hostname@web 在提示中输入password即可
 
 ```commandline
-ssh liangzi@219.216.87.170
+ssh liangzi@219.216.72.117
 ```
 
 即可连接上远程服务器
@@ -25,7 +29,7 @@ ssh liangzi@219.216.87.170
 
 在本地shell下使用
 ```commandline
-scp -r /home/liangzi/FusionNeuralNetwork liangzi@219.216.87.170:/home/liangzi/
+scp -r /home/liangzi/FusionNeuralNetwork liangzi@219.216.72.117:/home/liangzi/
 ```
 注意，这里的地址需要改成自己的。如果需要指定端口，需要使用-P（此处的P一定是要大写，小写的已经被占用了）
 
@@ -35,7 +39,7 @@ scp -r /home/liangzi/FusionNeuralNetwork liangzi@219.216.87.170:/home/liangzi/
 
 在本地shell下使用
 ```commandline
-scp -r liangzi@219.216.87.170:/path.filename /home/liangzi/cc
+scp -r liangzi@219.216.72.117:/path.filename /home/liangzi/cc
 ```
 注意，这里的-r指的是连着文件夹和里面的文件一起copy
 
@@ -103,8 +107,13 @@ pip install opencv-python
 ```
 > 到此，所有的安装都已经完成！！！开始享受GPU的飞速吧！或者赶紧把代码写完......
 
-
-
+## 使用过程中的可能问题：
+### conda安装之torch不存在
+这是由于重启之后conda被覆盖，需要添加conda路径。可以将这一指令添加到开机或者开启命令行的.rc文件中，代码为
+```commandline
+export PATH=/home/liangzi/anaconda3/bin:$PATH
+```
+此外，深度学习服务器无法展示命令行之外的东西。
 
 
 
