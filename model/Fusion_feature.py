@@ -6,7 +6,7 @@ liangzia,2018,5,23
 '''
 import torch as t
 import numpy as np
-from BasicModule import BasicModule
+from .BasicModule import BasicModule
 from torch import nn
 
 class Fusion_feature(BasicModule):

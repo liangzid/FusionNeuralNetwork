@@ -15,7 +15,7 @@ We need to use it.
 
 import torch as t
 import numpy as np
-from BasicModule import BasicModule
+from .BasicModule import BasicModule
 from torch import nn
 
 

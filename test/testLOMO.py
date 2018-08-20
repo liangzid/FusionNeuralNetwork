@@ -16,6 +16,7 @@ for i in range(len(imgs_path)):
 #np.savetxt('./feature1.txt',feature[1,:])
 def normalizee(feature1):
     lens=len(feature1)
+    print(lens)
     max=feature1[0]
     min=feature1[0]
     for i in range(lens):
