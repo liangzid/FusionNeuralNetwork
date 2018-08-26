@@ -3,7 +3,8 @@
 Author:liangzia, 2018.
 
 address:[github](https://github.com/liangzid/FusionNeuralNetwork)
-*2273067585@qq.com*
+
+**2273067585@qq.com**
 
 Reference codes:[baseline](https://github.com/layumi/Person_reID_baseline_pytorch)
 
@@ -43,7 +44,7 @@ Remember to change the dataset path to your own path.
 
 ## Train
 
-**Note: You Must Be Sure That There is A directory in FusionNeuralNetWork Called model Where must have the per-trained model about ResNet50. **
+**Note: You Must Be Sure That There is A directory in FusionNeuralNetWork Called model Where must have the per-trained model about ResNet50.**
 If not,come [here](https://github.com/layumi/Person_reID_baseline_pytorch) to train,using:
 ```bash
 python train.py --gpu_ids 0 --name ft_ResNet50 --train_all --batchsize 32  --data_dir your_data_path --erasing_p 0.5
@@ -52,6 +53,9 @@ if you already have it,just run:
 ```bash
 python3 train.py --gpu_ids 0,1,2,3 --name LiangZiZuiShuai --read_name ft_ResNet50 --train_all --batchsize 2 --color_jitter --which_epoch last 
 ```
+Warning: the batchsize must be 2. if you want to change that,come to ./Model/hand-on-feature/LOMO.py ,maybe in 315th line,and change the batchsize.You can also use it to change the LOMO feature.
+
+
 ## Test
 Use trained model to extract feature by
 ```bash
@@ -64,4 +68,3 @@ python evaluate.py
 ```
 
 
-this reposity has been abondoned...
